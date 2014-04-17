@@ -4,7 +4,7 @@ Dydra.com Software Development Kit (SDK) for JavaScript
 This is the official JavaScript software development kit (SDK) for
 [Dydra.com][], the cloud-hosted RDF & SPARQL database service.
 
-<https://github.com/dydra/dydra-js>
+<https://github.com/dydra/dydra.js>
 
 Dependencies
 ------------
@@ -14,18 +14,6 @@ Dependencies
 Note: the instructions in this README, and the operation of the library
 itself, implicitly assume a Unix system (Mac OS X, Linux, or *BSD) at
 present. Patches improving Windows support are most welcome.
-
-Download
---------
-
-To get a local working copy of the development repository, do:
-
-    $ git clone git://github.com/dydra/dydra-js.git
-
-Mailing List
-------------
-
-* <http://groups.google.com/group/dydra>
 
 Authors
 -------
