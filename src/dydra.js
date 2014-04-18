@@ -15,22 +15,14 @@ var Dydra = (function($) {
   var Session = function(config) {
     if (config === undefined) config = {};
 
-    var baseURL = "http://" + (config.host || "dydra.com") + "/";
-
-    var getEndpointURL = function(repositoryName, options) {
-      var url = baseURL + repositoryName + "/sparql";
-      var token = options.token || config.token;
-      if (token) {
-        url += '?auth_token=' + token;
-      }
-      return url;
-    };
+    this.baseURL = "http://" + (config.host || "dydra.com") + "/";
 
     /**
      * Returns a SPARQL client for a repository.
      */
     this.open = function(repositoryName, options) {
-      return new SPARQL.Client(getEndpointURL(repositoryName, options));
+      return new Repository(this, repositoryName,
+        $.extend({}, config, options));
     };
 
     /**
@@ -45,8 +37,40 @@ var Dydra = (function($) {
     };
   };
 
+  /**
+   * Constructs a Dydra repository reference.
+   *
+   * @param [Session} session
+   * @param {String} name
+   * @param {Object} config
+   */
+  var Repository = function(session, name, config) {
+    if (config === undefined) config = {};
+
+    var getEndpointURL = function() {
+      var url = session.baseURL + name + "/sparql";
+      if (config.token) {
+        url += '?auth_token=' + config.token;
+      }
+      return url;
+    };
+
+    this.session = session;
+    this.name = name;
+    this.sparql = new SPARQL.Client(getEndpointURL());
+
+    this.query = function(queryText, options) {
+      this.sparql.query(queryText, options);
+    };
+
+    this.update = function(queryText, options) {
+      this.sparql.update(queryText, options);
+    };
+  };
+
   return {
-    Session: Session
+    Session: Session,
+    Repository: Repository
   };
 })(jQuery);
 
