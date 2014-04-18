@@ -25,13 +25,18 @@ var SPARQL = (function($) {
       });
     };
 
-    this.update = function() {
+    this.update = function(queryText, settings) {
       // TODO
     };
   };
 
+  var Query = function(settings) {
+    this.queryForm = settings.form || "SELECT";
+  };
+
   return {
-    Client: Client
+    Client: Client,
+    Query: Query
   };
 })(jQuery);
 
