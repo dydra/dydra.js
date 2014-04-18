@@ -8,9 +8,23 @@
 
 var SPARQL = (function($) {
   var Client = function(endpointURL) {
-    this.query = function() {
-      // TODO
+    this.query = function(queryText, settings) {
+      $.ajax(endpointURL, {
+        type: 'POST',
+        contentType: 'application/sparql-query',
+        data: queryText,
+        dataType: 'json',
+        accepts: {json: 'application/sparql-results+json'},
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('Accept', 'application/sparql-results+json');
+        },
+        username: settings.username,
+        password: settings.password,
+        success: settings.success,
+        error: settings.failure
+      });
     };
+
     this.update = function() {
       // TODO
     };
