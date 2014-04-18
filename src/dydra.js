@@ -14,6 +14,18 @@ var Dydra = (function($) {
     if (options === undefined) options = {};
     var baseURL = options.baseURL || "http://dydra.com/";
 
+    var getEndpointURL = function(repositoryName, options) {
+      var url = baseURL + repositoryName + "/sparql";
+      if (options.token) {
+        url += '?auth_token=' + options.token;
+      }
+      return url;
+    };
+
+    this.open = function(repositoryName, options) {
+      return new SPARQL.Client(getEndpointURL(repositoryName, options));
+    };
+
     /**
      * Executes a SPARQL query on a repository.
      *
@@ -22,8 +34,7 @@ var Dydra = (function($) {
      * @param {Object} options
      */
     this.query = function(repositoryName, queryText, options) {
-      var client = new SPARQL.Client(baseURL + repositoryName + "/sparql");
-      client.query(queryText, options);
+      this.open(repositoryName, options).query(queryText, options);
     };
   };
 
