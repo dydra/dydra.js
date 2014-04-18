@@ -20,43 +20,45 @@ var SPARQL = (function($) {
     if (config === undefined) config = {};
 
     /**
-     * Executes a SPARQL Query request.
+     * @param {Object} options
      */
-    this.query = function(queryText, options) {
-      $.ajax(endpointURL, {
+    this.ajax = function(options) {
+      $.ajax(endpointURL, $.extend({}, {
         type: 'POST',
-        contentType: 'application/sparql-query',
-        data: queryText,
         dataType: 'json',
         accepts: {json: 'application/sparql-results+json'},
         beforeSend: function(xhr) {
           xhr.setRequestHeader('Accept', 'application/sparql-results+json');
-        },
-        username: options.username || config.username,
-        password: options.password || config.password,
-        success:  options.success,
-        error:    options.failure
-      });
+        }
+      }, config, options));
+    };
+
+    /**
+     * Executes a SPARQL Query request.
+     *
+     * @param {String} queryText
+     * @param {Object} options
+     */
+    this.query = function(queryText, options) {
+      this.ajax($.extend({}, options, {
+        contentType: 'application/sparql-query',
+        data: queryText,
+        error: options.failure || options.error
+      }));
     };
 
     /**
      * Executes a SPARQL Update request.
+     *
+     * @param {String} queryText
+     * @param {Object} options
      */
     this.update = function(queryText, options) {
-      $.ajax(endpointURL, {
-        type: 'POST',
+      this.ajax($.extend({}, options, {
         contentType: 'application/sparql-update',
         data: queryText,
-        dataType: 'json',
-        accepts: {json: 'application/sparql-results+json'},
-        beforeSend: function(xhr) {
-          xhr.setRequestHeader('Accept', 'application/sparql-results+json');
-        },
-        username: options.username || config.username,
-        password: options.password || config.password,
-        success:  options.success,
-        error:    options.failure
-      });
+        error: options.failure || options.error
+      }));
     };
   };
 
