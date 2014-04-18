@@ -4,6 +4,26 @@ Dydra.com Software Development Kit (SDK) for JavaScript
 This is the official JavaScript software development kit (SDK) for
 Dydra.com_, the cloud-hosted RDF_ & SPARQL_ database service.
 
+Examples
+--------
+
+::
+
+   var mySession = new Dydra.Session({token: "MY_SECRET_TOKEN"});
+
+   var myRepository = mySession.open("my_account/my_repository");
+
+   myRepository.query("SELECT * WHERE {?s ?p ?o} LIMIT 10", {
+     success: function(data) {
+       console.log("SPARQL query succeeded and returned:");
+       console.log(data);
+     },
+     failure: function(xhr) {
+       console.log("SPARQL query failed.");
+       console.log(xhr);
+     }
+   });
+
 Dependencies
 ------------
 
