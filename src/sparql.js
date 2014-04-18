@@ -12,8 +12,12 @@ var SPARQL = (function($) {
    *
    * @see http://www.w3.org/TR/sparql11-protocol/
    * @see http://www.w3.org/TR/sparql11-results-json/
+   * @see http://www.w3.org/TR/sparql11-http-rdf-update/
    */
-  var Client = function(endpointURL) {
+  var Client = function(endpointURL, options) {
+    /**
+     * Executes a SPARQL Query request.
+     */
     this.query = function(queryText, options) {
       $.ajax(endpointURL, {
         type: 'POST',
@@ -31,8 +35,24 @@ var SPARQL = (function($) {
       });
     };
 
+    /**
+     * Executes a SPARQL Update request.
+     */
     this.update = function(queryText, options) {
-      // TODO
+      $.ajax(endpointURL, {
+        type: 'POST',
+        contentType: 'application/sparql-update',
+        data: queryText,
+        dataType: 'json',
+        accepts: {json: 'application/sparql-results+json'},
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('Accept', 'application/sparql-results+json');
+        },
+        username: options.username,
+        password: options.password,
+        success: options.success,
+        error: options.failure
+      });
     };
   };
 
