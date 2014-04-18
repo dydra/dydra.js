@@ -7,13 +7,23 @@
  */
 
 var Dydra = (function($) {
-  var Session = function(settings) {
-    if (settings === undefined) settings = {};
-    var baseURL = settings.baseURL || "http://dydra.com/";
+  /**
+   * A Dydra client session.
+   */
+  var Session = function(options) {
+    if (options === undefined) options = {};
+    var baseURL = options.baseURL || "http://dydra.com/";
 
-    this.query = function(repositoryName, queryText, settings) {
+    /**
+     * Executes a SPARQL query on a repository.
+     *
+     * @param {String} repositoryName
+     * @param {String} queryText
+     * @param {Object} options
+     */
+    this.query = function(repositoryName, queryText, options) {
       var client = new SPARQL.Client(baseURL + repositoryName + "/sparql");
-      client.query(queryText, settings);
+      client.query(queryText, options);
     };
   };
 
