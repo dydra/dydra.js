@@ -8,13 +8,17 @@
 
 var SPARQL = (function($) {
   /**
-   * A SPARQL 1.1 client for jQuery.
+   * Constructs a SPARQL 1.1 client for jQuery.
+   *
+   * @param {Object} config
    *
    * @see http://www.w3.org/TR/sparql11-protocol/
    * @see http://www.w3.org/TR/sparql11-results-json/
    * @see http://www.w3.org/TR/sparql11-http-rdf-update/
    */
-  var Client = function(endpointURL, options) {
+  var Client = function(endpointURL, config) {
+    if (config === undefined) config = {};
+
     /**
      * Executes a SPARQL Query request.
      */
@@ -28,10 +32,10 @@ var SPARQL = (function($) {
         beforeSend: function(xhr) {
           xhr.setRequestHeader('Accept', 'application/sparql-results+json');
         },
-        username: options.username,
-        password: options.password,
-        success: options.success,
-        error: options.failure
+        username: options.username || config.username,
+        password: options.password || config.password,
+        success:  options.success,
+        error:    options.failure
       });
     };
 
@@ -48,22 +52,25 @@ var SPARQL = (function($) {
         beforeSend: function(xhr) {
           xhr.setRequestHeader('Accept', 'application/sparql-results+json');
         },
-        username: options.username,
-        password: options.password,
-        success: options.success,
-        error: options.failure
+        username: options.username || config.username,
+        password: options.password || config.password,
+        success:  options.success,
+        error:    options.failure
       });
     };
   };
 
   /**
-   * A SPARQL query builder.
+   * Constructs a SPARQL query builder.
+   *
+   * @param {Object} config
    *
    * @see http://www.w3.org/TR/sparql11-query/
    */
-  var Query = function(options) {
-    if (options === undefined) options = {};
-    this.form = options.form || "SELECT";
+  var Query = function(config) {
+    if (config === undefined) config = {};
+
+    this.form = config.form || "SELECT";
     this.variables = [];
 
     /**
