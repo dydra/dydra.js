@@ -1,19 +1,23 @@
-test("default query form", function() {
+test("SPARQL.Query construction", function() {
   equal((new SPARQL.Query).form, "SELECT", "expected default query form to be SELECT");
 });
 
-test("ASK construction", function() {
+test("SPARQL.Query#ask", function() {
   equal((new SPARQL.Query).ask().form, "ASK", "expected query form to be ASK");
 });
 
-test("CONSTRUCT construction", function() {
+test("SPARQL.Query#construct", function() {
   equal((new SPARQL.Query).construct().form, "CONSTRUCT", "expected query form to be CONSTRUCT");
 });
 
-test("DESCRIBE construction", function() {
+test("SPARQL.Query#describe", function() {
   equal((new SPARQL.Query).describe().form, "DESCRIBE", "expected query form to be DESCRIBE");
 });
 
-test("SELECT construction", function() {
+test("SPARQL.Query#select", function() {
   equal((new SPARQL.Query).select().form, "SELECT", "expected query form to be SELECT");
+});
+
+test("SPARQL.Query#from", function() {
+  equal((new SPARQL.Query).from("http://example.org/").from, "http://example.org/");
 });

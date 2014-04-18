@@ -57,6 +57,11 @@ var SPARQL = (function($) {
       this.patterns = patterns;
       return this;
     };
+
+    this.from = function(uri) {
+      this.from = uri;
+      return this;
+    };
   };
 
   return {
