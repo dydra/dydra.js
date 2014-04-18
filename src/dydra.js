@@ -8,20 +8,27 @@
 
 var Dydra = (function($) {
   /**
-   * A Dydra client session.
+   * Constructs a Dydra client session.
+   *
+   * @param {Object} config
    */
-  var Session = function(options) {
-    if (options === undefined) options = {};
-    var baseURL = options.baseURL || "http://dydra.com/";
+  var Session = function(config) {
+    if (config === undefined) config = {};
+
+    var baseURL = "http://" + (config.host || "dydra.com") + "/";
 
     var getEndpointURL = function(repositoryName, options) {
       var url = baseURL + repositoryName + "/sparql";
-      if (options.token) {
-        url += '?auth_token=' + options.token;
+      var token = options.token || config.token;
+      if (token) {
+        url += '?auth_token=' + token;
       }
       return url;
     };
 
+    /**
+     * Returns a SPARQL client for a repository.
+     */
     this.open = function(repositoryName, options) {
       return new SPARQL.Client(getEndpointURL(repositoryName, options));
     };
