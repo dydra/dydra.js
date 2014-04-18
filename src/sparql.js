@@ -62,6 +62,16 @@ var SPARQL = (function($) {
       this.from = uri;
       return this;
     };
+
+    this.distinct = function() {
+      this.modifier = "DISTINCT";
+      return this;
+    };
+
+    this.reduced = function() {
+      this.modifier = "REDUCED";
+      return this;
+    };
   };
 
   return {
