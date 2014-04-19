@@ -9,17 +9,21 @@
   ],
   "homepage": "https://github.com/dydra/dydra.js",
   "bugs": "https://github.com/dydra/dydra.js/issues",
-  "licenses": [{
-    "type": "Unlicense",
-    "url": "http://unlicense.org/UNLICENSE"
-  }],
+  "licenses": [
+    {
+      "type": "Unlicense",
+      "url": "http://unlicense.org/UNLICENSE"
+    }
+  ],
   "author": {
     "name": "Arto Bendiken",
     "email": "arto@dydra.com",
     "url": "http://ar.to/"
   },
   "contributors": [],
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "main": "src/dydra.js",
   "directories": {
     "lib": "src",
@@ -36,12 +40,13 @@
     "jquery": ">=1.9"
   },
   "devDependencies": {
-    "grunt": "~0.4.4",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-qunit": "~0.4.0",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-qunit": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.8"
   }
 }
