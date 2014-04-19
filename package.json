@@ -34,7 +34,7 @@
     "url": "https://github.com/dydra/dydra.js.git"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test --force"
   },
   "dependencies": {
     "jquery": ">=1.9"
