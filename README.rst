@@ -27,8 +27,14 @@ Examples
 Dependencies
 ------------
 
-* JavaScript_
-* jQuery_
+To use this library from your own code, the only runtime dependency is
+jQuery_.
+
+To contribute to this library, the development dependencies are:
+
+* NPM_ for package and dependency management
+* Grunt_ for task execution (static analysis and the test harness)
+* QUnit_ for unit testing
 
 Note: the instructions in this README implicitly assume a Unix system (Mac
 OS X, Linux, or BSD) at present. Patches improving Windows support are most
@@ -56,7 +62,10 @@ This is free and unencumbered public domain software. For more information,
 see http://unlicense.org/ or the accompanying ``UNLICENSE`` file.
 
 .. _Dydra.com:  http://dydra.com/
+.. _Grunt:      http://gruntjs.com/
 .. _JavaScript: http://en.wikipedia.org/wiki/JavaScript
 .. _jQuery:     http://jquery.com/
+.. _NPM:        https://www.npmjs.org/
+.. _QUnit:      http://qunitjs.com/
 .. _RDF:        http://en.wikipedia.org/wiki/Resource_Description_Framework
 .. _SPARQL:     http://en.wikipedia.org/wiki/SPARQL
