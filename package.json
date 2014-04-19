@@ -1,0 +1,47 @@
+{
+  "name": "dydra",
+  "version": "0.0.0",
+  "description": "Dydra Software Development Kit (SDK) for JavaScript",
+  "keywords": [
+    "Dydra",
+    "RDF",
+    "SPARQL"
+  ],
+  "homepage": "https://github.com/dydra/dydra.js",
+  "bugs": "https://github.com/dydra/dydra.js/issues",
+  "licenses": [{
+    "type": "Unlicense",
+    "url": "http://unlicense.org/UNLICENSE"
+  }],
+  "author": {
+    "name": "Arto Bendiken",
+    "email": "arto@dydra.com",
+    "url": "http://ar.to/"
+  },
+  "contributors": [],
+  "files": ["src"],
+  "main": "src/dydra.js",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dydra/dydra.js.git"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "jquery": ">=1.9"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-qunit": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
