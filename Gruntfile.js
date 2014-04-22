@@ -5,15 +5,15 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
       gruntfile: {
-        //options: {jshintrc: '.jshintrc'},
+        options: {jshintrc: '.jshintrc'},
         src: 'Gruntfile.js'
       },
       src: {
-        //options: {jshintrc: 'src/.jshintrc'},
+        options: {jshintrc: 'src/.jshintrc'},
         src: ['src/**/*.js']
       },
       test: {
-        //options: {jshintrc: 'test/.jshintrc'},
+        options: {jshintrc: 'test/.jshintrc'},
         src: ['test/**/*.js']
       }
     },
@@ -40,6 +40,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('test', ['qunit']);
+  grunt.registerTask('test', ['jshint', 'qunit']);
   grunt.registerTask('default', ['test']);
 };
