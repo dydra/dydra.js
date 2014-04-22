@@ -13,7 +13,9 @@ var Dydra = (function($) {
    * @param {Object} config
    */
   var Session = function(config) {
-    if (config === undefined) config = {};
+    if (config === undefined) {
+      config = {};
+    }
 
     this.baseURL = "http://" + (config.host || "dydra.com") + "/";
 
@@ -45,7 +47,9 @@ var Dydra = (function($) {
    * @param {Object} config
    */
   var Repository = function(session, name, config) {
-    if (config === undefined) config = {};
+    if (config === undefined) {
+      config = {};
+    }
 
     var getEndpointURL = function() {
       var url = session.baseURL + name + "/sparql";
@@ -57,6 +61,8 @@ var Dydra = (function($) {
 
     this.session = session;
     this.name = name;
+
+    /* global SPARQL */
     this.sparql = new SPARQL.Client(getEndpointURL());
 
     this.query = function(queryText, options) {

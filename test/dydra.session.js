@@ -1,3 +1,5 @@
+/* global Dydra */
+
 asyncTest("README example", function() {
   var mySession = new Dydra.Session(/*{token: "MY_SECRET_TOKEN"}*/);
 

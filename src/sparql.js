@@ -17,7 +17,9 @@ var SPARQL = (function($) {
    * @see http://www.w3.org/TR/sparql11-http-rdf-update/
    */
   var Client = function(endpointURL, config) {
-    if (config === undefined) config = {};
+    if (config === undefined) {
+      config = {};
+    }
 
     /**
      * @param {Object} options
@@ -70,7 +72,9 @@ var SPARQL = (function($) {
    * @see http://www.w3.org/TR/sparql11-query/
    */
   var Query = function(config) {
-    if (config === undefined) config = {};
+    if (config === undefined) {
+      config = {};
+    }
 
     this.form = config.form || "SELECT";
     this.variables = [];
