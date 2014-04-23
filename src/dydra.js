@@ -74,9 +74,25 @@ var Dydra = (function($) {
     };
   };
 
+  /**
+   * Constructs a Dydra view reference.
+   *
+   * @param [Session} session
+   * @param {String} name
+   * @param {Object} config
+   */
+  var View = function(session, name, config) {
+    if (config === undefined) {
+      config = {};
+    }
+
+    // TODO
+  };
+
   return {
     Session: Session,
-    Repository: Repository
+    Repository: Repository,
+    View: View
   };
 })(jQuery);
 
