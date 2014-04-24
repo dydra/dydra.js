@@ -1,40 +1,51 @@
 /* global SPARQL */
 
-test("SPARQL.Query construction", function() {
-  equal((new SPARQL.Query()).form, "SELECT",
-    "expected default query form to be SELECT");
+describe("SPARQL.Query", function() {
+  it("default query form is SELECT", function() {
+    expect((new SPARQL.Query()).form).toEqual("SELECT");
+  });
 });
 
-test("SPARQL.Query#ask()", function() {
-  equal((new SPARQL.Query()).ask().form, "ASK",
-    "expected query form to be ASK");
+describe("SPARQL.Query#ask()", function() {
+  it("query form is ASK", function() {
+    expect((new SPARQL.Query()).ask().form).toEqual("ASK");
+  });
 });
 
-test("SPARQL.Query#construct()", function() {
-  equal((new SPARQL.Query()).construct().form, "CONSTRUCT",
-    "expected query form to be CONSTRUCT");
+describe("SPARQL.Query#construct()", function() {
+  it("query form is CONSTRUCT", function() {
+    expect((new SPARQL.Query()).construct().form).toEqual("CONSTRUCT");
+  });
 });
 
-test("SPARQL.Query#describe()", function() {
-  equal((new SPARQL.Query()).describe().form, "DESCRIBE",
-    "expected query form to be DESCRIBE");
+describe("SPARQL.Query#describe()", function() {
+  it("query form is DESCRIBE", function() {
+    expect((new SPARQL.Query()).describe().form).toEqual("DESCRIBE");
+  });
 });
 
-test("SPARQL.Query#select()", function() {
-  equal((new SPARQL.Query()).select().form, "SELECT",
-    "expected query form to be SELECT");
+describe("SPARQL.Query#select()", function() {
+  it("query form is SELECT", function() {
+    expect((new SPARQL.Query()).select().form).toEqual("SELECT");
+  });
 });
 
-test("SPARQL.Query#from(uri)", function() {
-  equal((new SPARQL.Query()).from("http://example.org/").from, "http://example.org/");
+describe("SPARQL.Query#from(uri)", function() {
+  it("sets the #from property", function() {
+    expect((new SPARQL.Query()).from("http://example.org/").from).toEqual("http://example.org/");
+  });
 });
 
-test("SPARQL.Query#distinct()", function() {
-  equal((new SPARQL.Query()).modifier, undefined);
-  equal((new SPARQL.Query()).distinct().modifier, "DISTINCT");
+describe("SPARQL.Query#distinct()", function() {
+  it("sets the #modifier property", function() {
+    expect((new SPARQL.Query()).modifier).toBe(undefined);
+    expect((new SPARQL.Query()).distinct().modifier).toEqual("DISTINCT");
+  });
 });
 
-test("SPARQL.Query#reduced()", function() {
-  equal((new SPARQL.Query()).modifier, undefined);
-  equal((new SPARQL.Query()).reduced().modifier, "REDUCED");
+describe("SPARQL.Query#reduced()", function() {
+  it("sets the #modifier property", function() {
+    expect((new SPARQL.Query()).modifier).toBe(undefined);
+    expect((new SPARQL.Query()).reduced().modifier).toEqual("REDUCED");
+  });
 });

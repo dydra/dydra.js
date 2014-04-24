@@ -17,8 +17,12 @@ module.exports = function(grunt) {
         src: ['test/**/*.js']
       }
     },
-    qunit: {
-      files: ['test/**/*.html']
+    jasmine: {
+      src: ['src/**/*.js'],
+      options: {
+        vendor: ['lib/**/*.js'],
+        specs: ['test/**/*.js']
+      }
     },
     watch: {
       gruntfile: {
@@ -27,19 +31,19 @@ module.exports = function(grunt) {
       },
       src: {
         files: ['src/**/*.js'],
-        tasks: ['jshint:src', 'qunit']
+        tasks: ['jshint:src', 'jasmine']
       },
       test: {
         files: ['test/**/*.html', 'test/**/*.js'],
-        tasks: ['jshint:test', 'qunit']
+        tasks: ['jshint:test', 'jasmine']
       }
     },
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('test', ['jshint', 'qunit']);
+  grunt.registerTask('test', ['jshint', 'jasmine']);
   grunt.registerTask('default', ['test']);
 };

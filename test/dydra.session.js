@@ -1,7 +1,12 @@
 /* global Dydra */
 
+describe("Dydra.Session", function() {
+  // TODO
+});
+
+/*
 asyncTest("README example", function() {
-  var mySession = new Dydra.Session(/*{token: "MY_SECRET_TOKEN"}*/);
+  var mySession = new Dydra.Session({token: "MY_SECRET_TOKEN"});
 
   var myRepository = mySession.open("jhacker/foaf");
 
@@ -21,3 +26,4 @@ asyncTest("README example", function() {
     }
   });
 });
+*/

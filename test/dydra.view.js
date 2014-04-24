@@ -1,3 +1,5 @@
-test("todo", function() {
-  expect(0);
+/* global Dydra */
+
+describe("Dydra.View", function() {
+  // TODO
 });

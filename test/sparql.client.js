@@ -1,3 +1,5 @@
-test("todo", function() {
-  expect(0);
+/* global SPARQL */
+
+describe("SPARQL.Client", function() {
+  // TODO
 });

@@ -17,23 +17,8 @@
   "maxlen": 100,
   "devel": true,
   "predef": [
-    "QUnit",
-    "asyncTest",
-    "deepEqual",
-    "equal",
+    "describe",
     "expect",
-    "module",
-    "notDeepEqual",
-    "notEqual",
-    "notPropEqual",
-    "notStrictEqual",
-    "ok",
-    "propEqual",
-    "raises",
-    "start",
-    "stop",
-    "strictEqual",
-    "test",
-    "throws"
+    "it"
   ]
 }
