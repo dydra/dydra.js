@@ -88,6 +88,18 @@ var SPARQL = (function($) {
         }
       }, config, options));
     };
+
+    /**
+     * @param {Object} data in RDF/JSON format
+     * @param {Object} options
+     */
+    this.insert = function(data, options) {
+      this.ajax($.extend({}, options, {
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        error: options.failure || options.error
+      }));
+    };
   };
 
   /**
