@@ -51,15 +51,10 @@ var Dydra = (function($) {
       config = {};
     }
 
-    var getEndpointURL = function(suffix, graphURI) {
+    var getEndpointURL = function(suffix) {
       var url = session.baseURL + name + "/" + suffix;
-      if (graphURI !== undefined) {
-        url += "?";
-        url += (graphURI === null) ? "default" : "graph=" + encodeURIComponent(graphURI);
-      }
       if (config.token) {
-        url += (graphURI === undefined) ? "?" : "&";
-        url += 'auth_token=' + config.token;
+        url += '?auth_token=' + config.token;
       }
       return url;
     };
@@ -69,7 +64,7 @@ var Dydra = (function($) {
 
     /* global SPARQL */
     this.sparql = new SPARQL.Client(getEndpointURL("sparql"));
-    this.store  = new SPARQL.Store(getEndpointURL("service", null));
+    this.store  = new SPARQL.Store(getEndpointURL("service"));
 
     this.query = function(queryText, options) {
       this.sparql.query(queryText, options);

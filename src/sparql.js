@@ -80,7 +80,6 @@ var SPARQL = (function($) {
      */
     this.ajax = function(options) {
       $.ajax(endpointURL, $.extend({}, {
-        type: 'POST',
         dataType: 'json',
         accepts: {json: 'application/json'},
         beforeSend: function(xhr) {
@@ -90,11 +89,25 @@ var SPARQL = (function($) {
     };
 
     /**
+     * @param {String} graphURI
+     * @param {Object} options
+     */
+    this.fetch = function(graphURI, options) {
+      this.ajax($.extend({}, options, {
+        type: 'GET',
+        data: (graphURI === null) ? {default: null} : {graph: graphURI},
+        error: options.failure || options.error
+      }));
+    };
+
+    /**
+     * @param {String} graphURI
      * @param {Object} data in RDF/JSON format
      * @param {Object} options
      */
-    this.insert = function(data, options) {
+    this.insert = function(graphURI, data, options) {
       this.ajax($.extend({}, options, {
+        type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(data),
         error: options.failure || options.error
