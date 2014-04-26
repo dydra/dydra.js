@@ -8,13 +8,12 @@
 
 var SPARQL = (function($) {
   /**
-   * Constructs a SPARQL 1.1 client for jQuery.
+   * Constructs a SPARQL 1.1 Query/Update client for jQuery.
    *
    * @param {Object} config
    *
    * @see http://www.w3.org/TR/sparql11-protocol/
    * @see http://www.w3.org/TR/sparql11-results-json/
-   * @see http://www.w3.org/TR/sparql11-http-rdf-update/
    */
   var Client = function(endpointURL, config) {
     if (config === undefined) {
@@ -61,6 +60,33 @@ var SPARQL = (function($) {
         data: queryText,
         error: options.failure || options.error
       }));
+    };
+  };
+
+  /**
+   * Constructs a SPARQL Graph Store Protocol client for jQuery.
+   *
+   * @param {Object} config
+   *
+   * @see http://www.w3.org/TR/sparql11-http-rdf-update/
+   */
+  var Store = function(endpointURL, config) {
+    if (config === undefined) {
+      config = {};
+    }
+
+    /**
+     * @param {Object} options
+     */
+    this.ajax = function(options) {
+      $.ajax(endpointURL, $.extend({}, {
+        type: 'POST',
+        dataType: 'json',
+        accepts: {json: 'application/json'},
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('Accept', 'application/json');
+        }
+      }, config, options));
     };
   };
 
@@ -164,6 +190,7 @@ var SPARQL = (function($) {
 
   return {
     Client: Client,
+    Store: Store,
     Query: Query
   };
 })(jQuery);
