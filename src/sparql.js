@@ -76,10 +76,20 @@ var SPARQL = (function($) {
     }
 
     /**
+     * @param {String} graphURI
+     */
+    this.url = function(graphURI) {
+      var url = endpointURL;
+      url += (url.indexOf('?') == -1) ? '?' : '&';
+      url += (graphURI === null) ? 'default' : 'graph=' + encodeURIComponent(graphURI);
+      return url;
+    };
+
+    /**
      * @param {Object} options
      */
-    this.ajax = function(options) {
-      $.ajax(endpointURL, $.extend({}, {
+    this.ajax = function(url, options) {
+      $.ajax(url, $.extend({}, {
         dataType: 'json',
         accepts: {json: 'application/json'},
         beforeSend: function(xhr) {
@@ -93,9 +103,8 @@ var SPARQL = (function($) {
      * @param {Object} options
      */
     this.fetch = function(graphURI, options) {
-      this.ajax($.extend({}, options, {
+      this.ajax(this.url(graphURI), $.extend({}, options, {
         type: 'GET',
-        data: (graphURI === null) ? {default: null} : {graph: graphURI},
         error: options.failure || options.error
       }));
     };
@@ -106,7 +115,7 @@ var SPARQL = (function($) {
      * @param {Object} options
      */
     this.insert = function(graphURI, data, options) {
-      this.ajax($.extend({}, options, {
+      this.ajax(this.url(graphURI), $.extend({}, options, {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(data),
