@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dydra SDK for JavaScript: Examples: Write triples</title>
+    <title>Dydra SDK for JavaScript: Examples: Insert RDF triples</title>
   </head>
   <body>
-    <h1>Write triples</h1>
+    <h1>Insert RDF triples</h1>
 
     <h2>Settings</h2>
     <div class="settings"></div>
 
-    <h2>Query</h2>
-    <pre class="query"></pre>
+    <h2>Data</h2>
+    <pre class="data"></pre>
 
-    <h2>Result</h2>
-    <pre class="result"></pre>
+    <h2>Response</h2>
+    <pre class="response"></pre>
 
     <script src="../../lib/jquery.js"></script>
     <script src="../../src/dydra.js"></script>
@@ -26,27 +26,29 @@
 
       var myRepository = mySession.open(DYDRA_ACCOUNT + "/" + DYDRA_REPOSITORY);
 
-      var query = {};
+      var graphURI = null; /* `null` designates the default graph */
+      var data = {};
       var subject = 'http://example.org/instance';
       var predicate = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
       var object = 'http://schema.org/Thing';
-      query[subject] = {};
-      query[subject][predicate] = [{
+      data[subject] = {};
+      data[subject][predicate] = [{
         'value': object,
         'type': 'uri'
       }]
-      console.log(query);
-      $('.query').html(JSON.stringify(query, undefined, 2));
-      myRepository.update(query, {
+      console.log(data);
+      $('.data').html(JSON.stringify(data, undefined, 2));
+
+      myRepository.store.insert(graphURI, data, {
         success: function(data) {
-          console.log("SPARQL query succeeded and returned:");
+          console.log("Request succeeded and returned:");
           console.log(data);
-          $('.result').html(JSON.stringify(data, undefined, 2));
+          $('.response').html(JSON.stringify(data, undefined, 2));
         },
         failure: function(xhr) {
-          console.log("SPARQL query failed.");
+          console.log("Request failed.");
           console.log(xhr);
-          $('.result').html(JSON.stringify(xhr, undefined, 2));
+          $('.response').html(JSON.stringify(xhr, undefined, 2));
         }
       });
     </script>

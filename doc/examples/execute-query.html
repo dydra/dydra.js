@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dydra SDK for JavaScript: Examples: Read triples</title>
+    <title>Dydra SDK for JavaScript: Examples: Execute SPARQL query</title>
   </head>
   <body>
-    <h1>Read triples</h1>
+    <h1>Execute SPARQL query</h1>
 
     <h2>Settings</h2>
     <div class="settings"></div>
@@ -12,8 +12,8 @@
     <h2>Query</h2>
     <pre class="query"></pre>
 
-    <h2>Result</h2>
-    <pre class="result"></pre>
+    <h2>Response</h2>
+    <pre class="response"></pre>
 
     <script src="../../lib/jquery.js"></script>
     <script src="../../src/dydra.js"></script>
@@ -28,16 +28,17 @@
 
       var query = "SELECT * WHERE {?s ?p ?o} LIMIT 10";
       $('.query').html(query);
+
       myRepository.query(query, {
         success: function(data) {
           console.log("SPARQL query succeeded and returned:");
           console.log(data);
-          $('.result').html(JSON.stringify(data, undefined, 2));
+          $('.response').html(JSON.stringify(data, undefined, 2));
         },
         failure: function(xhr) {
           console.log("SPARQL query failed.");
           console.log(xhr);
-          $('.result').html(JSON.stringify(xhr, undefined, 2));
+          $('.response').html(JSON.stringify(xhr, undefined, 2));
         }
       });
     </script>

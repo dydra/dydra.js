@@ -3,7 +3,7 @@ function show_dydra_settings() {
   if (typeof DYDRA_ACCOUNT === 'undefined') {
     connection_info += '<h1>Oops, no settings!</h1>';
     connection_info += '<p>Copy settings.example.js to settings.js, which is gitignored.';
-    connection_info += 'Enter your settings in it and refresh this page.</p>';
+    connection_info += ' Enter your settings in it and refresh this page.</p>';
   }
   else {
     connection_info += 'You are connecting as user <b>' + DYDRA_ACCOUNT + '</b>';
