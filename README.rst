@@ -48,7 +48,12 @@ welcome.
 Authors
 -------
 
-* `Arto Bendiken <https://github.com/bendiken>`_ - <http://dydra.com/bendiken>
+* `Arto Bendiken <https://github.com/bendiken>`_ - http://dydra.com/bendiken
+
+Contributors
+------------
+
+* `Arnaud Levy <https://github.com/arnaudlevy>`_ - http://dydra.com/arnaudlevy
 
 Contributing
 ------------
