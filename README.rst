@@ -29,6 +29,10 @@ Examples
      }
    });
 
+For more examples of using this library, see the `doc/examples`_ directory.
+
+.. _doc/examples: https://github.com/arnaudlevy/dydra.js/tree/master/doc/examples
+
 Dependencies
 ------------
 
