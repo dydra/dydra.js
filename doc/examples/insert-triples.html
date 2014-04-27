@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8"/>
     <title>Dydra SDK for JavaScript: Examples: Insert RDF triples</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
   </head>
   <body>
-    <h1>Insert RDF triples</h1>
-    <p>This example inserts some <a href="http://rdfabout.com/">RDF</a>
-    statements (using the <a href="http://www.w3.org/TR/rdf-json/">RDF/JSON</a>
-    serialization format) into a Dydra repository using the
-    <a href="http://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1
-    Graph Store HTTP Protocol</a>.</p>
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Dydra SDK for JavaScript</a>
+        </div>
+      </div>
+    </div>
 
-    <h2>Settings</h2>
-    <div class="settings"></div>
+    <div class="container">
+      <h1>Example: Insert RDF triples</h1>
 
-    <h2>Data</h2>
-    <pre class="data"></pre>
+      <p>This example inserts some <a href="http://rdfabout.com/">RDF</a>
+      statements (using the <a href="http://www.w3.org/TR/rdf-json/">RDF/JSON</a>
+      serialization format) into a Dydra repository using the
+      <a href="http://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1
+      Graph Store HTTP Protocol</a>.</p>
 
-    <h2>Response</h2>
-    <pre class="response"></pre>
+      <h2>Settings</h2>
+      <div class="settings"></div>
+
+      <h2>Data</h2>
+      <pre class="data"></pre>
+
+      <h2>Response</h2>
+      <pre class="response"></pre>
+    </div>
 
     <script src="../../lib/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
     <script src="../../src/dydra.js"></script>
     <script src="../../src/sparql.js"></script>
     <script src="settings.js"></script>
