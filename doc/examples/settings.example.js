@@ -1,3 +1,3 @@
-var DYDRA_TOKEN = "your token here";
-var DYDRA_USER = "your dydra username here";
-var DYDRA_REPOSITORY = "your repository name here";
+var DYDRA_TOKEN      = "replace this with your Dydra API access token";
+var DYDRA_ACCOUNT    = "replace this with your Dydra account name";
+var DYDRA_REPOSITORY = "replace this with your Dydra repository name";
