@@ -4,3 +4,4 @@ tmp/
 *~
 README.html
 node_modules
+examples/settings.js

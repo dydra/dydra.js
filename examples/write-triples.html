@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Write triples - dydra.js example</title>
+</head>
+<body>
+  <h1>Read triples</h1>
+  <h2>Settings</h2>
+  <div class="settings"></div>
+  <h2>Query</h2>
+  <div class="query"></div>
+  <h2>Result</h2>
+  <div class="result"></div>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="../src/dydra.js"></script>
+  <script src="../src/sparql.js"></script>
+  <script src="settings.js"></script>
+  <script src="show-settings.js"></script>
+  <script type="text/javascript">
+    var mySession = new Dydra.Session({token: DYDRA_TOKEN});
+    var myRepository = mySession.open(DYDRA_USER + "/" + DYDRA_REPOSITORY);
+    var query = {};
+    var subject = 'http://example.org/instance';
+    var predicate = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+    var object = 'http://schema.org/Thing';
+    query[subject] = {};
+    query[subject][predicate] = [{
+      'value': object,
+      'type': 'uri'
+    }]
+    console.log(query);
+    $('.query').html(JSON.stringify(query));
+    myRepository.update(query, {
+      success: function(data) {
+        console.log("SPARQL query succeeded and returned:");
+        console.log(data);
+        $('.result').html(JSON.stringify(data));
+      },
+      failure: function(xhr) {
+        console.log("SPARQL query failed.");
+        console.log(xhr);
+        $('.result').html(JSON.stringify(xhr));
+      }
+    });
+  </script>
+</body>
+</html>
