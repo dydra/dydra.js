@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Read triples - dydra.js example</title>
+</head>
+<body>
+  <h1>Read triples</h1>
+  <h2>Settings</h2>
+  <div class="settings"></div>
+  <h2>Query</h2>
+  <pre class="query"></pre>
+  <h2>Result</h2>
+  <pre class="result"></pre>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="../src/dydra.js"></script>
+  <script src="../src/sparql.js"></script>
+  <script src="settings.js"></script>
+  <script src="show-settings.js"></script>
+  <script type="text/javascript">
+    var mySession = new Dydra.Session({token: DYDRA_TOKEN});
+    var myRepository = mySession.open(DYDRA_USER + "/" + DYDRA_REPOSITORY);
+    var query = "SELECT * WHERE {?s ?p ?o} LIMIT 10";
+    $('.query').html(query);
+    myRepository.query(query, {
+      success: function(data) {
+        console.log("SPARQL query succeeded and returned:");
+        console.log(data);
+        $('.result').html(JSON.stringify(data, undefined, 2));
+      },
+      failure: function(xhr) {
+        console.log("SPARQL query failed.");
+        console.log(xhr);
+        $('.result').html(JSON.stringify(xhr, undefined, 2));
+      }
+    });
+  </script>
+</body>
+</html>
