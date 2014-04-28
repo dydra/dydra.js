@@ -94,6 +94,13 @@ var SPARQL = (function($) {
         accepts: {json: 'application/json'},
         beforeSend: function(xhr) {
           xhr.setRequestHeader('Accept', 'application/json');
+        },
+        error: function(jqXHR) {
+          var handler = options.failure || options.error;
+          if (jqXHR.status === 201) {
+            handler = options.success ? options.success.bind(this, {}) : function() {};
+          }
+          return handler.apply(this, arguments);
         }
       }, config, options));
     };
@@ -104,8 +111,7 @@ var SPARQL = (function($) {
      */
     this.fetch = function(graphURI, options) {
       this.ajax(this.url(graphURI), $.extend({}, options, {
-        type: 'GET',
-        error: options.failure || options.error
+        type: 'GET'
       }));
     };
 
@@ -118,8 +124,7 @@ var SPARQL = (function($) {
       this.ajax(this.url(graphURI), $.extend({}, options, {
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(data),
-        error: options.failure || options.error
+        data: JSON.stringify(data)
       }));
     };
   };
