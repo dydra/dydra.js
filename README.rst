@@ -58,6 +58,7 @@ Contributors
 ------------
 
 * `Arnaud Levy <https://github.com/arnaudlevy>`_ - http://dydra.com/arnaudlevy
+* `Ihèb Ben Romdhane <https://github.com/loun4>`_
 
 Contributing
 ------------
