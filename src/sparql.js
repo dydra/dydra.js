@@ -80,6 +80,7 @@ var SPARQL = (function($) {
      */
     this.url = function(graphURI) {
       var url = endpointURL;
+      graphURI = graphURI || null;
       url += (url.indexOf('?') == -1) ? '?' : '&';
       url += (graphURI === null) ? 'default' : 'graph=' + encodeURIComponent(graphURI);
       return url;
