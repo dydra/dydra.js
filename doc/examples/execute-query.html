@@ -52,18 +52,18 @@
       var myRepository = mySession.open(DYDRA_ACCOUNT + "/" + DYDRA_REPOSITORY);
 
       var query = "SELECT * WHERE {?s ?p ?o} LIMIT 10";
-      $('.query').html(query);
+      $('.query').text(query);
 
       myRepository.query(query, {
         success: function(data) {
           console.log("SPARQL query succeeded and returned:");
           console.log(data);
-          $('.response').html(JSON.stringify(data, undefined, 2));
+          $('.response').text(JSON.stringify(data, undefined, 2));
         },
         failure: function(xhr) {
           console.log("SPARQL query failed.");
           console.log(xhr);
-          $('.response').html(JSON.stringify(xhr, undefined, 2));
+          $('.response').text(JSON.stringify(xhr, undefined, 2));
         }
       });
     </script>

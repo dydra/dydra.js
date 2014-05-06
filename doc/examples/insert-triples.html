@@ -57,18 +57,18 @@
         'type': 'uri'
       }]
       console.log(data);
-      $('.data').html(JSON.stringify(data, undefined, 2));
+      $('.data').text(JSON.stringify(data, undefined, 2));
 
       myRepository.store.insert(graphURI, data, {
         success: function(data) {
           console.log("Request succeeded and returned:");
           console.log(data);
-          $('.response').html(JSON.stringify(data, undefined, 2));
+          $('.response').text(JSON.stringify(data, undefined, 2));
         },
         failure: function(xhr) {
           console.log("Request failed.");
           console.log(xhr);
-          $('.response').html(JSON.stringify(xhr, undefined, 2));
+          $('.response').text(JSON.stringify(xhr, undefined, 2));
         }
       });
     </script>
