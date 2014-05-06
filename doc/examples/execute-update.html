@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Dydra SDK for JavaScript: Examples: Execute SPARQL update</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Dydra SDK for JavaScript</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1>Example: Execute SPARQL update</h1>
+
+      <p>This example executes a simple <a
+      href="http://www.w3.org/TR/sparql11-update/">SPARQL update</a>
+      operation on a Dydra repository using the
+      <a href="http://www.w3.org/TR/sparql11-protocol/">SPARQL 1.1 Protocol</a>.
+      </p>
+
+      <h2>Settings</h2>
+      <div class="settings"></div>
+
+      <h2>Query</h2>
+      <pre class="query"></pre>
+
+      <h2>Response</h2>
+      <pre class="response"></pre>
+    </div>
+
+    <script src="../../lib/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script src="../../src/dydra.js"></script>
+    <script src="../../src/sparql.js"></script>
+    <script src="settings.js"></script>
+    <script src="show-settings.js"></script>
+
+    <script type="text/javascript">
+      var mySession = new Dydra.Session({token: DYDRA_TOKEN});
+
+      var myRepository = mySession.open(DYDRA_ACCOUNT + "/" + DYDRA_REPOSITORY);
+
+      var query = "INSERT DATA { <http://example.org/instance> a <http://schema.org/Thing> . }";
+      $('.query').text(query);
+
+      myRepository.update(query, {
+        success: function(data) {
+          console.log("SPARQL query succeeded and returned:");
+          console.log(data);
+          $('.response').text(JSON.stringify(data, undefined, 2));
+        },
+        failure: function(xhr) {
+          console.log("SPARQL query failed.");
+          console.log(xhr);
+          $('.response').text(JSON.stringify(xhr, undefined, 2));
+        }
+      });
+    </script>
+  </body>
+</html>
