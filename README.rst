@@ -1,5 +1,6 @@
+*******************************************************
 Dydra.com Software Development Kit (SDK) for JavaScript
-=======================================================
+*******************************************************
 
 .. image:: https://api.travis-ci.org/dydra/dydra.js.svg?branch=master
    :target: https://travis-ci.org/dydra/dydra.js
@@ -9,7 +10,7 @@ This is the official JavaScript software development kit (SDK) for
 Dydra.com_, the cloud-hosted RDF_ & SPARQL_ database service.
 
 Examples
---------
+========
 
 ::
 
@@ -33,7 +34,7 @@ For more examples of using this library, see the `doc/examples`_ directory.
 .. _doc/examples: https://github.com/dydra/dydra.js/tree/master/doc/examples
 
 Dependencies
-------------
+============
 
 To use this library from your own code, the only runtime dependency is
 jQuery_ (>= 1.9).
@@ -49,18 +50,18 @@ OS X, Linux, or BSD) at present. Patches improving Windows support are most
 welcome.
 
 Authors
--------
+=======
 
 * `Arto Bendiken <https://github.com/bendiken>`_ - http://dydra.com/bendiken
 
 Contributors
-------------
+============
 
 * `Arnaud Levy <https://github.com/arnaudlevy>`_ - http://dydra.com/arnaudlevy
 * `Ihèb Ben Romdhane <https://github.com/loun4>`_
 
 Contributing
-------------
+============
 
 * Do your best to adhere to the existing coding conventions and idioms.
 * Don't use hard tabs, and don't leave trailing whitespace on any line.
@@ -70,7 +71,7 @@ Contributing
   list in the ``README``. Alphabetical order applies.
 
 License
--------
+=======
 
 This is free and unencumbered public domain software. For more information,
 see http://unlicense.org/ or the accompanying ``UNLICENSE`` file.
