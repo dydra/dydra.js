@@ -1,9 +1,8 @@
 Dydra.com Software Development Kit (SDK) for JavaScript
 =======================================================
 
-.. image:: https://travis-ci.org/dydra/dydra.js.png?branch=master
+.. image:: https://api.travis-ci.org/dydra/dydra.js.svg?branch=master
    :target: https://travis-ci.org/dydra/dydra.js
-   :align: right
    :alt: Travis CI build status
 
 This is the official JavaScript software development kit (SDK) for
